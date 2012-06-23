@@ -1,3 +1,10 @@
+// ==UserScript==
+// @name           reddit comment animation
+// @namespace      git2samus
+// @include        http://www.reddit.com/*
+// @match          http://www.reddit.com/*
+// ==/UserScript==
+
 /* Frame class
  * stores the contents of a single frame and the duration in ms that it'll be visible
  */
