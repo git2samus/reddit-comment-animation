@@ -21,20 +21,21 @@ function animate(target, frames) {
     var frames_l = frames.length;
 
     // animation callback
-    function _set_frame(frame_i) {
+    (function _set_frame(frame_i) {
         var frame = frames[frame_i];
 
         // set frame
-        target.innerHTML = frame.contents;
+        target.innerHTML = null;
+        for (var framecontent_i=0, framecontent_l=frame.contents.length; framecontent_i<framecontent_l; framecontent_i++) {
+            var framecontent = frame.contents[framecontent_i];
+            target.appendChild(framecontent.cloneNode(true));
+        };
 
         // update after frame.duration
         window.setTimeout(function() {
             _set_frame((frame_i+1) % frames_l);
         }, frame.duration);
-    };
-
-    // start animation
-    _set_frame(0);
+    })(0); // start animation
 };
 
 /* has_frames function:
@@ -82,8 +83,7 @@ function parse_comment(container) {
         };
     };
 
-    //animate(animation_box, frameset);
-    console.log(frameset);
+    animate(animation_box, frameset);
 };
 
 
