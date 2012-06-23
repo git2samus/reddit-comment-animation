@@ -6,11 +6,11 @@
 // ==/UserScript==
 
 /* Frame class:
- *  stores the contents of a single frame and the duration in ms that it'll be visible
+ *  represents a single frame in the animation
  */
 function Frame(contents, duration) {
-    this.contents = contents;
-    this.duration = duration;
+    this.contents = contents; // array of HTML nodes, all to be used on this frame
+    this.duration = duration; // time in ms this frame will be shown
 };
 
 /* animate function:
@@ -42,11 +42,50 @@ function animate(target, frames) {
  */
 function has_frames(container) {
     var anchors = container.getElementsByTagName('a');
-    for (var anchor_i=0, anchors_l=anchors.length; anchor_i<anchors_l; anchor_i++)
+    for (var anchor_i=0, anchors_l=anchors.length; anchor_i<anchors_l; anchor_i++) {
         //XXX should we check hostname?
         if (anchors[anchor_i].pathname == '/frame')
             return true;
+    };
 };
+
+/* function parse_comment:
+ *  receives div.md which should contain frames and loads animation
+ */
+function parse_comment(container) {
+    var animation_box;
+    var frameset = [];
+
+    var children = container.children;
+    var children_i=0;
+
+    while (children_i<children.length) {
+        var child = children[children_i];
+        var next_child = children[children_i+1];
+
+        if (has_frames(child)) {
+            if (typeof(animation_box) == 'undefined') {
+                animation_box = document.createElement('div');
+                animation_box.setAttribute('class', 'comment-animation');
+                container.insertBefore(animation_box, child);
+
+                children_i++;
+            };
+
+            var frame = new Frame([], 1e3);
+            frame.contents.push(container.removeChild(child));
+            frame.contents.push(container.removeChild(next_child));
+
+            frameset.push(frame);
+        } else {
+            children_i++;
+        };
+    };
+
+    //animate(animation_box, frameset);
+    console.log(frameset);
+};
+
 
 
 /* program start:
@@ -54,6 +93,8 @@ function has_frames(container) {
  */
 var usertexts = document.getElementsByClassName('usertext-body');
 for (var usertext_i=0, usertexts_l=usertexts.length; usertext_i<usertexts_l; usertext_i++) {
-    if (has_frames(usertexts[usertext_i]))
-        console.log(usertexts[usertext_i]);
+    var usertext = usertexts[usertext_i];
+
+    if (has_frames(usertext))
+        parse_comment(usertext.children[0]); // we assume .usertext-body > .md
 };
