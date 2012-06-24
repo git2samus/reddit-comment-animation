@@ -23,15 +23,15 @@ This comment on reddit:
 ```
 > [](/frame) here
 
-    (\u2022_\u2022)
+    (•_•)
 
 > [](/frame) we
 
-    ( \u2022_\u2022)>\u2310\u25a0-\u25a0
+    ( •_•)>⌐■-■
 
 > [](/frame) go!
 
-    (\u2310\u25a0_\u25a0)
+    (⌐■_■)
 ```
 
 will result in the following animation:
