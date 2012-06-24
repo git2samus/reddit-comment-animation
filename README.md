@@ -36,7 +36,7 @@ This comment on reddit:
 
 will result in the following animation:
 
-<img src="http://cloud.github.com/downloads/git2samus/reddit-comment-animation/example.gif" alt="sample animation" />
+<img src="https://github.com/downloads/git2samus/reddit-comment-animation/example.gif" alt="sample animation" />
 
 ## Licence
 
