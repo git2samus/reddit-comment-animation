@@ -38,6 +38,13 @@ will result in the following animation:
 
 <img src="https://github.com/downloads/git2samus/reddit-comment-animation/example.gif" alt="sample animation" />
 
+## FAQ
+
+### How do I remove the script?
+
+* Chrome: go to Preferences > Settings > Extensions > (reddit comment animation) Remove
+* Firefox: go to Tools > Add-ons > User Scripts > (reddit comment animation) Remove
+
 ## Licence
 
 Freeware.
