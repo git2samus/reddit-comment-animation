@@ -2,6 +2,8 @@
 
 A userscript to play text animations on reddit comments.
 
+Original idea by gfixler: http://www.reddit.com/r/vim/comments/upr3n/extracting_variable/c54m6r6?context=4
+
 ## Installation
 
 * Chrome: click [here](https://github.com/git2samus/reddit-comment-animation/raw/master/reddit-comment-animation.user.js).
@@ -34,7 +36,7 @@ This comment on reddit:
 
 will result in the following animation:
 
-![sample animation](http://cloud.github.com/downloads/git2samus/reddit-comment-animation/example.gif)
+<img src="http://cloud.github.com/downloads/git2samus/reddit-comment-animation/example.gif" alt="sample animation" />
 
 ## Licence
 
