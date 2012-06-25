@@ -1,8 +1,11 @@
 // ==UserScript==
 // @name           reddit comment animation
+// @description    A userscript to play text animations on reddit comments.
 // @namespace      git2samus
 // @include        http://www.reddit.com/*
 // @match          http://www.reddit.com/*
+// @version        0.1.0
+// @license        freeware
 // ==/UserScript==
 
 /* Frame class:
