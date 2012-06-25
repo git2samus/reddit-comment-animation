@@ -4,7 +4,7 @@
 // @namespace      git2samus
 // @include        http://www.reddit.com/*
 // @match          http://www.reddit.com/*
-// @version        1.0.0
+// @version        1.1.0
 // @license        freeware
 // ==/UserScript==
 
