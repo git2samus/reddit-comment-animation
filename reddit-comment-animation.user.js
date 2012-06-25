@@ -53,6 +53,34 @@ function has_frames(container) {
     };
 };
 
+/* extract_duration function:
+ *  attempts to extract duration in ms for this frame, defaults to 1 second
+ */
+function extract_duration(container) {
+    var duration_re = /^#([0-9]+)s([0-9]{3})?$/;
+
+    var anchors = container.getElementsByTagName('a');
+    for (var anchor_i=0, anchors_l=anchors.length; anchor_i<anchors_l; anchor_i++) {
+        var anchor = anchors[anchor_i];
+
+        //XXX should we check hostname?
+        if (anchor.pathname == '/frame') {
+            if (anchor.hash) {
+                var re_match = duration_re.exec(anchor.hash);
+
+                if (re_match)
+                    return 1e3 * parseInt(re_match[1]) + (parseInt(re_match[2]) || 0);
+
+                console.log('warning: malformed duration "' + anchor.hash +'"');
+            };
+
+            break; // there should be only one hidden link
+        };
+    };
+
+    return 1e3;
+};
+
 /* function parse_comment:
  *  receives div.md which should contain frames and loads animation
  */
@@ -76,7 +104,7 @@ function parse_comment(container) {
                 children_i++;
             };
 
-            var frame = new Frame([], 1e3);
+            var frame = new Frame([], extract_duration(child));
             frame.contents.push(container.removeChild(child));
             frame.contents.push(container.removeChild(next_child));
 
