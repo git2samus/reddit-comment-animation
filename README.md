@@ -45,6 +45,6 @@ will result in the following animation:
 * Chrome: go to Preferences > Settings > Extensions > (reddit comment animation) Remove
 * Firefox: go to Tools > Add-ons > User Scripts > (reddit comment animation) Remove
 
-## Licence
+## License
 
 Freeware.
